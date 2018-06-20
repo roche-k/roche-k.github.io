@@ -1,9 +1,9 @@
 # Site settings
-title: Roche Blog
-SEOTitle: A la guerre à guerre | Roche Blog
+title: Roche's Blog
+SEOTitle: Roche's Blog
 header-img: img/home-bg.jpg
 email: rochef@163.com
-description: ""
+description: "A la guerre à guerre"
 keyword: ""
 url: ""              		     # your host, for absolute URL
 baseurl: ""         # for example, '/blog' if your blog hosted on 'host/blog'
