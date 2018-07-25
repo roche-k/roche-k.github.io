@@ -87,17 +87,15 @@ TCP
 UDP
 
     {
-        .pr_type =		SOCK_STREAM,
-        .pr_domain =		&inetdomain,
-        .pr_protocol =		IPPROTO_TCP,
-        .pr_flags =		PR_CONNREQUIRED|PR_IMPLOPCL|PR_WANTRCVD,
-        .pr_input =		tcp_input,
-        .pr_ctlinput =		tcp_ctlinput,
-        .pr_ctloutput =		tcp_ctloutput,
-        .pr_init =		tcp_init,
-        .pr_slowtimo =		tcp_slowtimo,
-        .pr_drain =		tcp_drain,
-        .pr_usrreqs =		&tcp_usrreqs
+        .pr_type = 		SOCK_DGRAM,
+        .pr_domain = 		&inetdomain,
+        .pr_protocol = 		IPPROTO_UDP,
+        .pr_flags = 		PR_ATOMIC|PR_ADDR,
+        .pr_input = 		udp_input,
+        .pr_ctlinput = 		udp_ctlinput,
+        .pr_ctloutput = 	ip_ctloutput,
+        .pr_init = 		udp_init,
+        .pr_usrreqs = 		&udp_usrreqs
     },
 
 然后，做出一个只会打印的函数函数
