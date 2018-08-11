@@ -5,9 +5,320 @@
     <description>A la guerre à guerre</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 23 Jun 2018 15:10:32 +0800</pubDate>
-    <lastBuildDate>Sat, 23 Jun 2018 15:10:32 +0800</lastBuildDate>
+    <pubDate>Sat, 11 Aug 2018 22:05:33 +0800</pubDate>
+    <lastBuildDate>Sat, 11 Aug 2018 22:05:33 +0800</lastBuildDate>
     <generator>Jekyll v3.8.3</generator>
+    
+      <item>
+        <title>Cat Emperor 1</title>
+        <description>&lt;p&gt;最近在推销我的Blog的时候听到了这样的反馈：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;没趣味，都是技术文章&lt;/li&gt;
+  &lt;li&gt;。。。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;那么这次就写我家的猫皇吧&lt;br /&gt;
+&lt;del&gt;才不是最近想要偷懒&lt;/del&gt;&lt;/p&gt;
+
+&lt;p&gt;最近合肥天气很热。&lt;br /&gt;
+周末的时候，一到中午就能看到我家猫皇张嘴哈气散热。&lt;br /&gt;
+没错，就是类似狗散热的放方式。&lt;br /&gt;
+然后我就帮我家猫皇打开了空调。&lt;/p&gt;
+
+&lt;p&gt;空调环境大概这样&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;|-----|
+|空调 |
+|-----|
+|
+|------------------------------|   &amp;lt;-床
+|                              |
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;del&gt;每次push图片都失败，不想加图了&lt;/del&gt;&lt;/p&gt;
+
+&lt;p&gt;一般，我中午会午睡一会。&lt;br /&gt;
+醒来时发现我家猫皇直接占领了空调出风口。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;--------------------------------
+|   猫                         |
+|                   |--|       |     空调出风领域
+|   `     `      `  |  |   `   |
+|                   |  |       |
+|      ------------------      |
+|     |                   |--| |
+|     |                   |--| |     &amp;lt;-我
+|     |                   |    |
+|      ------------------      |
+|                              |
+|                              |
+--------------------------------
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;而且把出风口当成自己的领地了。&lt;br /&gt;
+然后就把铲屎官赶出了领地。&lt;/p&gt;
+
+&lt;p&gt;-.-&lt;/p&gt;
+</description>
+        <pubDate>Sat, 11 Aug 2018 04:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2018/08/11/CatEmperor1-2019/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/08/11/CatEmperor1-2019/</guid>
+        
+        <category>Cat</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>A simple kernel-level server 2</title>
+        <description>&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;#build&quot;&gt;跳过废话&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;总觉得睡不着。&lt;br /&gt;
+&lt;del&gt;那么就完善下之前写的通讯协议的rootkit下&lt;/del&gt;&lt;/p&gt;
+
+&lt;p id=&quot;build&quot;&gt;&lt;/p&gt;
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;正文&quot;&gt;正文&lt;/h2&gt;
+
+&lt;p&gt;上一次，最终我获取到了一个简单的把所有ICMP包置空的函数。&lt;br /&gt;
+这个函数是不完美的。&lt;br /&gt;
+但是至少开启了通信协议rootkit的头。&lt;/p&gt;
+
+&lt;p&gt;那么，这次加装一些代码，让通信变得正常。&lt;br /&gt;
+并且，为了以后加入一些简单多服务器功能，这次就用UDP的协议。&lt;/p&gt;
+
+&lt;p&gt;之前说过，UDP长成这个样子&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
+    .pr_type = 		    SOCK_DGRAM,
+    .pr_domain = 		&amp;amp;inetdomain,
+    .pr_protocol = 		IPPROTO_UDP,
+    .pr_flags = 		PR_ATOMIC|PR_ADDR,
+    .pr_input = 		udp_input,
+    .pr_ctlinput = 		udp_ctlinput,
+    .pr_ctloutput = 	ip_ctloutput,
+    .pr_init = 		    udp_init,
+    .pr_usrreqs = 		&amp;amp;udp_usrreqs
+},
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;那么，要处理的就是这个函数指针 pr_input，这个原先存放的是udp_input，现在我要把它变成我自己的函数。&lt;/p&gt;
+
+&lt;p&gt;首先，必不可少的&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;case MOD_LOAD:
+        /* Replace icmp_input with icmp_input_hook. */
+        inetsw[ip_protox[IPPROTO_UDP]].pr_input = udp_input_hook;
+        break;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;把pr_input拿下&lt;/p&gt;
+
+&lt;p&gt;然后开设设计&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;int
+udp_input_hook(struct mbuf **mp, int *offp, int proto);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;首先，处理一下作为传参进入的iphlen长度&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;if (iphlen &amp;gt; sizeof (struct ip)) {
+	ip_stripoptions(m);
+	iphlen = sizeof(struct ip);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;为了保证之后有UDP信息，UDP头和IP头的长度一定要保证下来。&lt;br /&gt;
+剩余长度不满足UDP头的话，接下来就没办法处理了，所以这里把数据返回。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ip = mtod(m, struct ip *);
+if (m-&amp;gt;m_len &amp;lt; iphlen + sizeof(struct udphdr)) {
+	if ((m = m_pullup(m, iphlen + sizeof(struct udphdr))) == NULL) {
+
+		UDPSTAT_INC(udps_hdrops);
+		return (IPPROTO_DONE);
+	}
+	ip = mtod(m, struct ip *);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;然后，获取UDP头&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;uh = (struct udphdr *)((caddr_t)ip + iphlen);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;再剥离头&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;m-&amp;gt;m_len -= iphlen + sizeof(struct udphdr);
+m-&amp;gt;m_data += iphlen + sizeof(struct udphdr);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;这样，当前m_data的位置就是UDP数据区的位置了&lt;br /&gt;
+把它打印出来&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;printf(&quot;load=%s \n&quot;, m-&amp;gt;m_data);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;然后把m_buf复原&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;m-&amp;gt;m_len += iphlen + sizeof(struct udphdr);
+m-&amp;gt;m_data -= iphlen + sizeof(struct udphdr);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;返回给原处理函数&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;return udp_input(mp, offp, proto);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;这样，就完成了把每次pr_input都打印出的一个内核协议的rootkit。&lt;/p&gt;
+
+&lt;p&gt;接下来，编译打入，就可以通过内核打印查看UDP内容了。&lt;br /&gt;
+这样，就获得了一个非阻断性的内核层recive_from()。&lt;/p&gt;
+
+&lt;p&gt;以后有时间再写吧。&lt;/p&gt;
+</description>
+        <pubDate>Thu, 26 Jul 2018 09:45:00 +0800</pubDate>
+        <link>http://localhost:4000/2018/07/26/SimpleKernelLevelServer2-2019/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/07/26/SimpleKernelLevelServer2-2019/</guid>
+        
+        <category>FreeBSD</category>
+        
+        <category>Kernel</category>
+        
+        <category>Server</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>A simple kernel-level server 1</title>
+        <description>&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;#build&quot;&gt;跳过废话&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;FreeBSD上的Rootkit终于写好啦～&lt;/p&gt;
+
+&lt;p&gt;本来想着在一个不是特别熟的内核环境，写一个内核程序，会比较慢。 &lt;br /&gt;
+&lt;del&gt;实际上是相当慢。&lt;/del&gt;&lt;br /&gt;
+&lt;del&gt;vnode很烦，内存空间很烦&lt;/del&gt;&lt;br /&gt;
+但是终于完成了，撒花～～～～&lt;/p&gt;
+
+&lt;p&gt;最近看到，很久之前FreeBSD hackers在讨论做的一个内核层的http服务器，感觉挺有意思的。&lt;br /&gt;
+然后打算能不能自己写一个。&lt;/p&gt;
+
+&lt;p&gt;当然不是向过去的代码里添加https模块， &lt;br /&gt;
+当然也不是一开始从头造轮子，做一个类似的。&lt;/p&gt;
+
+&lt;p&gt;从一个简单的聊天服务器开始吧。&lt;br /&gt;
+&lt;del&gt;几乎确定会写一点点，然后弃坑。&lt;/del&gt;&lt;/p&gt;
+
+&lt;p id=&quot;build&quot;&gt;&lt;/p&gt;
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;正文&quot;&gt;正文&lt;/h2&gt;
+
+&lt;p&gt;作为一只服务器&lt;/p&gt;
+
+&lt;p&gt;第一步，需要接受信息，这里就需要从BSD的协议栈上，把原有的处理函数hook下来。&lt;/p&gt;
+
+&lt;p&gt;这是一个很麻烦的事情。
+hook下TCP UDP报文，判定需求的属性，然后根据报文不同的类型，采取不同的策略。&lt;br /&gt;
+并决定是否将数据通入服务器函数内，或者交给原有函数，或者丢弃报文。&lt;/p&gt;
+
+&lt;p&gt;总之，是一个几乎需要复制原有处理函数的工作。
+还需要加上服务器处理函数。&lt;br /&gt;
+&lt;del&gt;确定会弃坑&lt;/del&gt;&lt;/p&gt;
+
+&lt;p&gt;那么，先写一个ICMP的hook练手吧，毕竟时间挺晚了，明天还要上班。&lt;br /&gt;
+好像和服务器没什么关系，并且也没打算一次写完。
+所以打算看服务器应该怎么写的观众可以右上角了。&lt;/p&gt;
+
+&lt;p&gt;既然是需要hook下协议处理函数，首先就是这个函数的注册方法。&lt;/p&gt;
+
+&lt;p&gt;ICMP长这样&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
+    .pr_type =		SOCK_RAW,
+    .pr_domain =		&amp;amp;inetdomain,
+    .pr_protocol =		IPPROTO_ICMP,
+    .pr_flags =		PR_ATOMIC|PR_ADDR|PR_LASTHDR,
+    .pr_input =		icmp_input,
+    .pr_ctloutput =		rip_ctloutput,
+    .pr_usrreqs =		&amp;amp;rip_usrreqs
+},
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;TCP&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
+    .pr_type =		SOCK_STREAM,
+    .pr_domain =		&amp;amp;inetdomain,
+    .pr_protocol =		IPPROTO_TCP,
+    .pr_flags =		PR_CONNREQUIRED|PR_IMPLOPCL|PR_WANTRCVD,
+    .pr_input =		tcp_input,
+    .pr_ctlinput =		tcp_ctlinput,
+    .pr_ctloutput =		tcp_ctloutput,
+    .pr_init =		tcp_init,
+    .pr_slowtimo =		tcp_slowtimo,
+    .pr_drain =		tcp_drain,
+    .pr_usrreqs =		&amp;amp;tcp_usrreqs
+},
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;UDP&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
+    .pr_type = 		SOCK_DGRAM,
+    .pr_domain = 		&amp;amp;inetdomain,
+    .pr_protocol = 		IPPROTO_UDP,
+    .pr_flags = 		PR_ATOMIC|PR_ADDR,
+    .pr_input = 		udp_input,
+    .pr_ctlinput = 		udp_ctlinput,
+    .pr_ctloutput = 	ip_ctloutput,
+    .pr_init = 		udp_init,
+    .pr_usrreqs = 		&amp;amp;udp_usrreqs
+},
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;然后，做出一个只会打印的函数函数&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;void
+icmp_input_hook(struct mbuf *m, int off)
+{
+    uprintf(&quot;hooked iemp\n&quot;);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;再之后，把这个函数挂上去&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;...
+ase MOD_LOAD:
+	inetsw[ip_protox[IPPROTO_ICMP]].pr_input = icmp_input_hook;
+	break;
+...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;然后，理论上所有的ICMP包就这样被截住了。&lt;br /&gt;
+&lt;del&gt;一定会出问题&lt;/del&gt;&lt;/p&gt;
+
+&lt;p&gt;如果没弃坑，下次再补充ICMP递交回去多内容吧。&lt;/p&gt;
+</description>
+        <pubDate>Fri, 13 Jul 2018 08:49:00 +0800</pubDate>
+        <link>http://localhost:4000/2018/07/13/SimpleKernelLevelServer1-2019/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/07/13/SimpleKernelLevelServer1-2019/</guid>
+        
+        <category>FreeBSD</category>
+        
+        <category>Kernel</category>
+        
+        <category>Server</category>
+        
+        
+      </item>
     
       <item>
         <title>A simple try on FreeBSD rootkit</title>
