@@ -72,9 +72,10 @@ tags:
 
 ![大概这样](https://roche-k.github.io/img/in-post/deep_learnig/2018-09-29-tensotboard.png)
 
-
 最后使用test集，可以达到99%以上的检测率。  
 混淆矩阵也很好看。
+
+![大概这样](https://roche-k.github.io/img/in-post/deep_learnig/2018-09-29-matrix)
 
 # 检测
 
