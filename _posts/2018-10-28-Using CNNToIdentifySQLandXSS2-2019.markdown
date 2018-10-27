@@ -55,29 +55,31 @@ tags:
 -   循环结束
 -   记录时间
 
-    void TF_Thraed(void)
-    {
-        int i;
-        struct timeval start, end;
 
-        model_t* model = TF_LoadModel("frozen.pb");
-        assert(model != NULL);
-        
-        gettimeofday( &start, NULL );
-        for(i = 0; i < LOOP_TIMES; i ++) {
-            if (!TF_FillTensor(model, input_line)) {
-                puts("TF_FillTensor failed");
-                return;
+        void TF_Thraed(void)
+        {
+            int i;
+            struct timeval start, end;
+
+            model_t* model = TF_LoadModel("frozen.pb");
+            assert(model != NULL);
+            
+            gettimeofday( &start, NULL );
+            for(i = 0; i < LOOP_TIMES; i ++) {
+                if (!TF_FillTensor(model, input_line)) {
+                    puts("TF_FillTensor failed");
+                    return;
+                }
+                TF_RunModel(model);
             }
-            TF_RunModel(model);
+            gettimeofday( &end, NULL );
+
+            total_time += ((end.tv_sec - start.tv_sec) * 1000000) + end.tv_usec - start.tv_usec;
+
+            TF_FreeModel(model);
+            pthread_detach(pthread_self());
         }
-        gettimeofday( &end, NULL );
 
-        total_time += ((end.tv_sec - start.tv_sec) * 1000000) + end.tv_usec - start.tv_usec;
-
-        TF_FreeModel(model);
-        pthread_detach(pthread_self());
-    }
 
 对应，主线程这里需要做一些修改
 
@@ -88,35 +90,38 @@ tags:
 线程扩充的时间需要平均被每条线程吃掉。
 实际上，线程完成的速度会稍有区别，得到的平均时间会稍大。
 
-    int main(int argc, char const *argv[])
-    {
-        pthread_t tf_thread[8];
-        double out_time;
-        
-        if (argc < 2 || !argv[1] ||!InitVocab()) {
-            puts("No input");
-            return 1;
+        int main(int argc, char const *argv[])
+        {
+            pthread_t tf_thread[8];
+            double out_time;
+            
+            if (argc < 2 || !argv[1] ||!InitVocab()) {
+                puts("No input");
+                return 1;
+            }
+            input_line = argv[1];
+            total_time = 0;
+
+            pthread_create(&tf_thread[0], NULL, (void *)TF_Thraed, NULL);
+            pthread_create(&tf_thread[1], NULL, (void *)TF_Thraed, NULL);
+            pthread_create(&tf_thread[2], NULL, (void *)TF_Thraed, NULL);
+            pthread_create(&tf_thread[3], NULL, (void *)TF_Thraed, NULL);
+            pthread_create(&tf_thread[4], NULL, (void *)TF_Thraed, NULL);
+            pthread_create(&tf_thread[5], NULL, (void *)TF_Thraed, NULL);
+            pthread_create(&tf_thread[6], NULL, (void *)TF_Thraed, NULL);
+            pthread_create(&tf_thread[7], NULL, (void *)TF_Thraed, NULL);
+
+            pthread_join(tf_thread[7], NULL);
+
+            sleep(2);
+            out_time = (total_time / 8) / TRUE_LOOP_TIME;
+            printf("max time = %f us\n", out_time);
+
+            return 0;
         }
-        input_line = argv[1];
-        total_time = 0;
 
-        pthread_create(&tf_thread[0], NULL, (void *)TF_Thraed, NULL);
-        pthread_create(&tf_thread[1], NULL, (void *)TF_Thraed, NULL);
-        pthread_create(&tf_thread[2], NULL, (void *)TF_Thraed, NULL);
-        pthread_create(&tf_thread[3], NULL, (void *)TF_Thraed, NULL);
-        pthread_create(&tf_thread[4], NULL, (void *)TF_Thraed, NULL);
-        pthread_create(&tf_thread[5], NULL, (void *)TF_Thraed, NULL);
-        pthread_create(&tf_thread[6], NULL, (void *)TF_Thraed, NULL);
-        pthread_create(&tf_thread[7], NULL, (void *)TF_Thraed, NULL);
-
-        pthread_join(tf_thread[8], NULL);
-
-        sleep(2);
-        out_time = (total_time / 8) / TRUE_LOOP_TIME;
-        printf("max time = %f us\n", out_time);
-
-        return 0;
-    }
+这里还可以把线程对应CPU绑定，或者使用更好的线程同步的方法。
+~~post不想写这些~~
 
 最后这里的平均计算时间为17微妙，比上一篇post，提高了6倍左右
 
