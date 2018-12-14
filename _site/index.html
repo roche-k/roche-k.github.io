@@ -154,6 +154,163 @@
             ">
     			
 <div class="post-preview">
+    <a href="/2018/11/15/MeaninglessPush1/">
+        <h2 class="post-title">
+            Meaningless Push 1
+        </h2>
+        
+        <h3 class="post-subtitle">
+            水贴 1
+        </h3>
+        
+        <div class="post-content-preview">
+            BSD内核服务器
+
+最近在写一个BSD内核内的HTTP服务器
+练手用
+随时都可能弃坑
+
+项目地址
+
+最近的一些反馈
+
+最近收到一些联络
+认为使用推送中的代码无法达到预期的效果
+
+比如
+之前写的加速判定字符串分类的推送
+
+这里说明下～
+
+
+  优化这个事情，有些普遍适用的部分，你在使用代码的过程中可能没有加入
+  有些优化的方法，由于保密协议的问题，不好说出来
+  懒的写
+
+
+就酱
+
+
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Roche on November 15, 2018
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2018/11/01/BuildASimpleChatBot/">
+        <h2 class="post-title">
+            Build a simple chat bot
+        </h2>
+        
+        <h3 class="post-subtitle">
+            建立一个简单的聊天机器人
+        </h3>
+        
+        <div class="post-content-preview">
+            前言
+
+这次用google翻译，应该会好一点了
+
+这次的算法和模型都是已知的一些东西
+除了数据，没有什么创新点
+尽量写短点
+
+模型
+
+聊天机器人的原理和模型，这个已经被探讨过很多遍了
+我觉得没有再重新复制粘贴，加几句当自己的理解的必要
+
+如果有想要了解的，左传搜索chat bot
+
+数据
+
+这次的数据从Galgame里获取
+没有错  G A L
+
+因为galgame有很多做移植的人员
+移植后...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Roche on November 1, 2018
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2018/10/28/Using-CNNToIdentifySQLandXSS2-2019/">
+        <h2 class="post-title">
+            Using CNN to identify SQL and XSS 2
+        </h2>
+        
+        <h3 class="post-subtitle">
+            使用CNN做SQL和XSS的识别 2
+        </h3>
+        
+        <div class="post-content-preview">
+            前言
+
+之前写过这个
+
+使用CNN做SQL和XSS的识别
+
+在前一个post里，模型的推理速度大约是100us。
+在这一篇post里，我将对这个模型做一些改进，让这个模型的预测速度更快一点。
+
+实际的步骤
+
+首先，我是利用一个类似与word2vec的思路，将数据转化为模型输入的数据的。
+总体的算法是一个循环查找匹配的动作。
+这个过程基于数据量的大小，有很多可以作为优化选项的算法。
+
+这里，随...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Roche on October 28, 2018
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2018/09/30/Using-CNNToIdentifySQLandXSS-2019/">
+        <h2 class="post-title">
+            Using CNN to identify SQL and XSS
+        </h2>
+        
+        <h3 class="post-subtitle">
+            使用CNN做SQL和XSS的识别
+        </h3>
+        
+        <div class="post-content-preview">
+            来篇正式点的Post吧
+燃燃燃然
+
+前言
+
+最近在FreeBUF上看到这样一篇文章
+基于卷积神经网络的SQL注入检测
+
+我觉得CNN算法就其本身而言，应用与NLP是没有问题的。
+但是这个检测率应该可以再提升一点。
+因为SQL，XSS的注入方法，就语法上而言，比NLP要简单一些。
+
+还可以用C写一个检测程序。
+这样就更容易让这个模型跑在实际的环境。
+
+而且，样本在送检之前，首先做了循环解码，再...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Roche on September 30, 2018
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/2018/08/11/CatEmperor1-2019/">
         <h2 class="post-title">
             Cat Emperor 1
@@ -164,28 +321,24 @@
         </h3>
         
         <div class="post-content-preview">
-            最近在推销我的Blog的时候听到了这样的反馈：
-
-
-  没趣味，都是技术文章
-  。。。
-
-
-那么这次就写我家的猫皇吧
+            这次就写我家的猫皇吧
 才不是最近想要偷懒
 
 最近合肥天气很热。
-周末的时候，一到中午就能看到我家猫皇张嘴哈气散热。
-没错，就是类似狗散热的放方式。
-然后我就帮我家猫皇打开了空调。
+中午的时候猫皇张嘴哈气散热，就是类似狗散热的放方式。
 
-空调环境大概这样
+为了午睡一会。
+顺带打开空调。
+醒来时发现我家猫皇占领了空调出风口。
 
-|-----|
-|空调 |
-|-----|
-|
-|----------------------...
+
+
+而且把这里当作领地了。
+
+试图赶走入侵者
+
+
+
         </div>
     </a>
     <p class="post-meta">
@@ -341,6 +494,16 @@ vnode很烦，内存空间很烦
                                 <a href="/tags/#Server" title="Server" rel="2">
                                     Server
                                 </a>
+                            
+                        
+                            
+                        
+                            
+                                <a href="/tags/#CNN" title="CNN" rel="2">
+                                    CNN
+                                </a>
+                            
+                        
                             
                         
                             

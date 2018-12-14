@@ -5,61 +5,387 @@
     <description>A la guerre à guerre</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 11 Aug 2018 22:05:33 +0800</pubDate>
-    <lastBuildDate>Sat, 11 Aug 2018 22:05:33 +0800</lastBuildDate>
-    <generator>Jekyll v3.8.3</generator>
+    <pubDate>Fri, 14 Dec 2018 15:42:54 +0800</pubDate>
+    <lastBuildDate>Fri, 14 Dec 2018 15:42:54 +0800</lastBuildDate>
+    <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>Meaningless Push 1</title>
+        <description>&lt;h1 id=&quot;bsd内核服务器&quot;&gt;BSD内核服务器&lt;/h1&gt;
+
+&lt;p&gt;最近在写一个BSD内核内的HTTP服务器&lt;br /&gt;
+练手用&lt;br /&gt;
+&lt;del&gt;随时都可能弃坑&lt;/del&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/roche-k/Tinyhttpd&quot;&gt;项目地址&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;最近的一些反馈&quot;&gt;最近的一些反馈&lt;/h1&gt;
+
+&lt;p&gt;最近收到一些联络&lt;br /&gt;
+认为使用推送中的代码无法达到预期的效果&lt;/p&gt;
+
+&lt;p&gt;比如&lt;br /&gt;
+之前写的加速判定字符串分类的推送&lt;/p&gt;
+
+&lt;p&gt;这里说明下～&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;优化这个事情，有些普遍适用的部分，你在使用代码的过程中可能没有加入&lt;/li&gt;
+  &lt;li&gt;有些优化的方法，由于保密协议的问题，不好说出来&lt;/li&gt;
+  &lt;li&gt;&lt;del&gt;懒的写&lt;/del&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;就酱&lt;/p&gt;
+
+</description>
+        <pubDate>Thu, 15 Nov 2018 20:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2018/11/15/MeaninglessPush1/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/11/15/MeaninglessPush1/</guid>
+        
+        <category>Meaningless</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Build a simple chat bot</title>
+        <description>&lt;h1 id=&quot;前言&quot;&gt;前言&lt;/h1&gt;
+
+&lt;p&gt;&lt;del&gt;这次用google翻译，应该会好一点了&lt;/del&gt;&lt;/p&gt;
+
+&lt;p&gt;这次的算法和模型都是已知的一些东西&lt;br /&gt;
+除了数据，没有什么创新点&lt;br /&gt;
+尽量写短点&lt;/p&gt;
+
+&lt;h1 id=&quot;模型&quot;&gt;模型&lt;/h1&gt;
+
+&lt;p&gt;聊天机器人的原理和模型，这个已经被探讨过很多遍了&lt;br /&gt;
+我觉得没有再重新复制粘贴，加几句当自己的理解的必要&lt;/p&gt;
+
+&lt;p&gt;如果有想要了解的，左传搜索chat bot&lt;/p&gt;
+
+&lt;h1 id=&quot;数据&quot;&gt;数据&lt;/h1&gt;
+
+&lt;p&gt;这次的数据从Galgame里获取&lt;br /&gt;
+没有错  G A L&lt;/p&gt;
+
+&lt;p&gt;因为galgame有很多做移植的人员&lt;br /&gt;
+移植后的游戏，对话数据一般会被保存在固定格式的脚本里&lt;/p&gt;
+
+&lt;p&gt;虽然脚本有很多内容&lt;br /&gt;
+&lt;del&gt;我也没研究过这些内容有什么作用&lt;/del&gt;&lt;br /&gt;
+但一般来说，对话 / 人物都很好提取&lt;/p&gt;
+
+&lt;p&gt;比如这个&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    L1 +++$+++ u0 +++$+++ m0 +++$+++ 【女招待】 +++$+++ 「欢迎光临。您远道而来，想必一定很累了吧？」
+    L2 +++$+++ u1 +++$+++ m0 +++$+++ 【深见】 +++$+++ 「不会……空气也清爽，也让我焕然一新呢」
+    L3 +++$+++ u0 +++$+++ m0 +++$+++ 【女招待】 +++$+++ 「是吗。那真是太好了」
+    L4 +++$+++ u0 +++$+++ m0 +++$+++ 【女招待】 +++$+++ 「您的包我先代为保管了。那么，请到里面来」
+    L5 +++$+++ u1 +++$+++ m0 +++$+++ 【深见】 +++$+++ 「谢谢」
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;赞美汉化组～～～～&lt;/p&gt;
+
+&lt;h1 id=&quot;训练&quot;&gt;训练&lt;/h1&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;使用CPU训练，大约30此迭代后完成   
+~~CPU很满~~
+
+然后就可以使用进行聊天了
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;结语&quot;&gt;结语&lt;/h1&gt;
+
+&lt;p&gt;撸猫撸猫&lt;/p&gt;
+</description>
+        <pubDate>Thu, 01 Nov 2018 20:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2018/11/01/BuildASimpleChatBot/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/11/01/BuildASimpleChatBot/</guid>
+        
+        <category>RNN</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Using CNN to identify SQL and XSS 2</title>
+        <description>&lt;h1 id=&quot;前言&quot;&gt;前言&lt;/h1&gt;
+
+&lt;p&gt;之前写过这个&lt;/p&gt;
+
+&lt;p&gt;使用CNN做SQL和XSS的识别&lt;/p&gt;
+
+&lt;p&gt;在前一个post里，模型的推理速度大约是100us。&lt;br /&gt;
+在这一篇post里，我将对这个模型做一些改进，让这个模型的预测速度更快一点。&lt;/p&gt;
+
+&lt;h1 id=&quot;实际的步骤&quot;&gt;实际的步骤&lt;/h1&gt;
+
+&lt;p&gt;首先，我是利用一个类似与word2vec的思路，将数据转化为模型输入的数据的。&lt;br /&gt;
+总体的算法是一个循环查找匹配的动作。&lt;br /&gt;
+这个过程基于数据量的大小，有很多可以作为优化选项的算法。&lt;/p&gt;
+
+&lt;p&gt;这里，随手利用一个～
+不做主体来说&lt;/p&gt;
+
+&lt;p&gt;然后，如果仔细观察下CPU利用率的话，&lt;br /&gt;
+可以发现，在循环跑session的过程中，CPU并没有拉满。
+可见在session运行中，有一些动作会使CPU空转，或者本身预测的过程，CPU就不容易拉起来。&lt;/p&gt;
+
+&lt;p&gt;这一点，可以启动多个session，并行处理数据&lt;/p&gt;
+
+&lt;p&gt;首先，定义总循环量，和单线程循环量&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#define TRUE_LOOP_TIME 100000
+#define LOOP_TIMES (TRUE_LOOP_TIME / 8)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;因为我是使用笔记本的i7 4700mq在跑，所以这里定义8条线程&lt;/p&gt;
+
+&lt;p&gt;然后这里是线程共有的信息&lt;br /&gt;
+需要的判定字符串，以及作为最后统计使用的最大时间&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;const char* input_line;
+long long total_time;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;然后定义线程应该做的事情&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;读取model，载入&lt;/li&gt;
+  &lt;li&gt;循环开始&lt;/li&gt;
+  &lt;li&gt;填充tensor&lt;/li&gt;
+  &lt;li&gt;跑session&lt;/li&gt;
+  &lt;li&gt;循环结束&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;记录时间&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;void TF_Thraed(void)
+{
+    int i;
+    struct timeval start, end;
+
+    model_t* model = TF_LoadModel(&quot;frozen.pb&quot;);
+    assert(model != NULL);
+        
+    gettimeofday( &amp;amp;start, NULL );
+    for(i = 0; i &amp;lt; LOOP_TIMES; i ++) {
+        if (!TF_FillTensor(model, input_line)) {
+            puts(&quot;TF_FillTensor failed&quot;);
+            return;
+        }
+        TF_RunModel(model);
+    }
+    gettimeofday( &amp;amp;end, NULL );
+
+    total_time += ((end.tv_sec - start.tv_sec) * 1000000) + end.tv_usec - start.tv_usec;
+
+    TF_FreeModel(model);
+    pthread_detach(pthread_self());
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;对应，主线程这里需要做一些修改&lt;/p&gt;
+
+&lt;p&gt;创建8条线程，并等待运行结束&lt;br /&gt;
+计算出平均时间，打印出来&lt;/p&gt;
+
+&lt;p&gt;这里是假设全线程会占用全部的性能。
+线程扩充的时间需要平均被每条线程吃掉。
+实际上，线程完成的速度会稍有区别，得到的平均时间会稍大。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    int main(int argc, char const *argv[])
+    {
+        pthread_t tf_thread[8];
+        double out_time;
+        
+        if (argc &amp;lt; 2 || !argv[1] ||!InitVocab()) {
+            puts(&quot;No input&quot;);
+            return 1;
+        }
+        input_line = argv[1];
+        total_time = 0;
+
+        pthread_create(&amp;amp;tf_thread[0], NULL, (void *)TF_Thraed, NULL);
+        pthread_create(&amp;amp;tf_thread[1], NULL, (void *)TF_Thraed, NULL);
+        pthread_create(&amp;amp;tf_thread[2], NULL, (void *)TF_Thraed, NULL);
+        pthread_create(&amp;amp;tf_thread[3], NULL, (void *)TF_Thraed, NULL);
+        pthread_create(&amp;amp;tf_thread[4], NULL, (void *)TF_Thraed, NULL);
+        pthread_create(&amp;amp;tf_thread[5], NULL, (void *)TF_Thraed, NULL);
+        pthread_create(&amp;amp;tf_thread[6], NULL, (void *)TF_Thraed, NULL);
+        pthread_create(&amp;amp;tf_thread[7], NULL, (void *)TF_Thraed, NULL);
+
+        pthread_join(tf_thread[7], NULL);
+
+        sleep(2);
+        out_time = (total_time / 8) / TRUE_LOOP_TIME;
+        printf(&quot;max time = %f us\n&quot;, out_time);
+
+        return 0;
+    }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;这里还可以把线程对应CPU绑定，或者使用更好的线程同步的方法。
+&lt;del&gt;post不想写这些&lt;/del&gt;&lt;/p&gt;
+
+&lt;p&gt;最后这里的平均计算时间为17微妙，比上一篇post，提高了6倍左右&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://roche-k.github.io/img/in-post/deep_learnig/2018-10-28-time.png&quot; alt=&quot;大概这样&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;结语&quot;&gt;结语&lt;/h1&gt;
+
+&lt;p&gt;撸猫撸猫&lt;/p&gt;
+</description>
+        <pubDate>Sun, 28 Oct 2018 10:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2018/10/28/Using-CNNToIdentifySQLandXSS2-2019/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/10/28/Using-CNNToIdentifySQLandXSS2-2019/</guid>
+        
+        <category>CNN</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Using CNN to identify SQL and XSS</title>
+        <description>&lt;p&gt;来篇正式点的Post吧&lt;br /&gt;
+&lt;del&gt;燃燃燃然&lt;/del&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;前言&quot;&gt;前言&lt;/h1&gt;
+
+&lt;p&gt;最近在FreeBUF上看到这样一篇文章&lt;br /&gt;
+&lt;a href=&quot;http://www.freebuf.com/articles/web/176709.html&quot;&gt;基于卷积神经网络的SQL注入检测&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;我觉得CNN算法就其本身而言，应用与NLP是没有问题的。&lt;br /&gt;
+但是这个检测率应该可以再提升一点。&lt;br /&gt;
+因为SQL，XSS的注入方法，就语法上而言，比NLP要简单一些。&lt;/p&gt;
+
+&lt;p&gt;还可以用C写一个检测程序。&lt;br /&gt;
+这样就更容易让这个模型跑在实际的环境。&lt;/p&gt;
+
+&lt;p&gt;而且，样本在送检之前，首先做了循环解码，再做归一化处理。&lt;br /&gt;
+循环解码是需要的，但是归一化处理不一样。&lt;br /&gt;
+安全性不论，每条数据先要跑正则再送检，这个效率要比传统的正则匹配法低一些。&lt;/p&gt;
+
+&lt;p&gt;那么，让我在巨人的肩膀上，再做一些小改进。&lt;/p&gt;
+
+&lt;h1 id=&quot;理论&quot;&gt;理论&lt;/h1&gt;
+
+&lt;p&gt;对于通过CNN来做NLP处理的论文，国内外都可以找到很多。&lt;/p&gt;
+
+&lt;p&gt;大致的原理是这样：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://roche-k.github.io/img/in-post/deep_learnig/2018-09-29-NLP-CNN.png&quot; alt=&quot;大概这样&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;句子-&amp;gt;词向量-&amp;gt;卷积层-&amp;gt;池化层-&amp;gt;链接层&lt;/p&gt;
+
+&lt;p&gt;简单的说，就是把句子内的词转化为词向量，后面接单层的CNN。&lt;/p&gt;
+
+&lt;h1 id=&quot;训练数据&quot;&gt;训练数据&lt;/h1&gt;
+
+&lt;p&gt;首先，我们需要训练集，对照集，检测集
+这个可以用github的一些数据。这里，就使用前一文中提到的数据集来检测。&lt;/p&gt;
+
+&lt;p&gt;首先，循环读取每一条数据，对每条数据循环解码，打上标签，最后存档。&lt;br /&gt;
+这里的UrlDecode()完成循环解码的功能。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for each_line in sql_file:
+    str=UrlDecode(each_line)
+    f.writelines('sql' + '\t' + str + '\n')
+    count += 1
+print(&quot;sql end at %d&quot; % count)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;对于训练集的第一条数据&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1%29%20AND%205628%3D4794  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;经过改写后，变成这样&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sql	1)and5628=4794
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;全部改写完成后，就可以用之前提到的模型训练了&lt;/p&gt;
+
+&lt;p&gt;整个训练在6次迭代后完成。
+这个是tensorboard的损失图像。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://roche-k.github.io/img/in-post/deep_learnig/2018-09-29-tensotboard.png&quot; alt=&quot;大概这样&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;最后使用test集，可以达到99%以上的检测率。&lt;br /&gt;
+混淆矩阵也很好看。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://roche-k.github.io/img/in-post/deep_learnig/2018-09-29-matrix.png&quot; alt=&quot;大概这样&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;检测&quot;&gt;检测&lt;/h1&gt;
+
+&lt;p&gt;之前说过，我们需要让这个模型能应用于实际的生产中。&lt;br /&gt;
+那么，结合Tensorflow的C库，来写一个检测程序。&lt;br /&gt;
+关于Tensorflow C库的使用，有很多现有的例子，就不多写了。&lt;/p&gt;
+
+&lt;p&gt;大致的流程是这样&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;int main(int argc, char* argv[])
+{
+    if (argc &amp;lt; 2) return 1;
+
+    // pre load
+    tf_model_t* model = LoadTFModel(&quot;./tf_model.pb&quot;);
+    FillTensor(argv[1]);
+
+    printf(&quot;Model Returns: %d\n&quot;, RunTFModel(model));
+
+    FreeTFModel(model);
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;这样，就完成了使用C来检测注入的目标。&lt;br /&gt;
+如果是需要重复的使用，可以在系统启动时调用LoadTFModel()，检测时只需调用FillTensor()和RunTFModel()即可。&lt;br /&gt;
+可以省略掉加载的时间。&lt;br /&gt;
+不用时调用FreeTFModel()清空资源。&lt;/p&gt;
+
+&lt;p&gt;如果需要看下单次处理的速度之类。&lt;br /&gt;
+在FillTensor()和RunTFModel()之间加个循环，前后记录时间，转double除一下就可以。&lt;/p&gt;
+
+&lt;p&gt;我在i7-2700上跑了50万次，平均不到100微秒。&lt;br /&gt;
+大致1秒1万-2万多次的样子。&lt;br /&gt;
+有时间调调参，或者使用GPU的话应该会更高。&lt;/p&gt;
+
+&lt;h1 id=&quot;结语&quot;&gt;结语&lt;/h1&gt;
+
+&lt;p&gt;撸猫撸猫&lt;/p&gt;
+</description>
+        <pubDate>Sun, 30 Sep 2018 06:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2018/09/30/Using-CNNToIdentifySQLandXSS-2019/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/09/30/Using-CNNToIdentifySQLandXSS-2019/</guid>
+        
+        <category>CNN</category>
+        
+        
+      </item>
     
       <item>
         <title>Cat Emperor 1</title>
-        <description>&lt;p&gt;最近在推销我的Blog的时候听到了这样的反馈：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;没趣味，都是技术文章&lt;/li&gt;
-  &lt;li&gt;。。。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;那么这次就写我家的猫皇吧&lt;br /&gt;
+        <description>&lt;p&gt;这次就写我家的猫皇吧&lt;br /&gt;
 &lt;del&gt;才不是最近想要偷懒&lt;/del&gt;&lt;/p&gt;
 
 &lt;p&gt;最近合肥天气很热。&lt;br /&gt;
-周末的时候，一到中午就能看到我家猫皇张嘴哈气散热。&lt;br /&gt;
-没错，就是类似狗散热的放方式。&lt;br /&gt;
-然后我就帮我家猫皇打开了空调。&lt;/p&gt;
+中午的时候猫皇张嘴哈气散热，就是类似狗散热的放方式。&lt;/p&gt;
 
-&lt;p&gt;空调环境大概这样&lt;/p&gt;
+&lt;p&gt;为了午睡一会。&lt;br /&gt;
+顺带打开空调。
+醒来时发现我家猫皇占领了空调出风口。&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;|-----|
-|空调 |
-|-----|
-|
-|------------------------------|   &amp;lt;-床
-|                              |
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;https://roche-k.github.io/img/in-post/cat/cat_001.png&quot; alt=&quot;大概这样&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;del&gt;每次push图片都失败，不想加图了&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;而且把这里当作领地了。&lt;/p&gt;
 
-&lt;p&gt;一般，我中午会午睡一会。&lt;br /&gt;
-醒来时发现我家猫皇直接占领了空调出风口。&lt;/p&gt;
+&lt;p&gt;试图赶走入侵者&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;--------------------------------
-|   猫                         |
-|                   |--|       |     空调出风领域
-|   `     `      `  |  |   `   |
-|                   |  |       |
-|      ------------------      |
-|     |                   |--| |
-|     |                   |--| |     &amp;lt;-我
-|     |                   |    |
-|      ------------------      |
-|                              |
-|                              |
---------------------------------
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;而且把出风口当成自己的领地了。&lt;br /&gt;
-然后就把铲屎官赶出了领地。&lt;/p&gt;
-
-&lt;p&gt;-.-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://roche-k.github.io/img/in-post/cat/cat_002.png&quot; alt=&quot;大概这样&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Sat, 11 Aug 2018 04:00:00 +0800</pubDate>
         <link>http://localhost:4000/2018/08/11/CatEmperor1-2019/</link>
