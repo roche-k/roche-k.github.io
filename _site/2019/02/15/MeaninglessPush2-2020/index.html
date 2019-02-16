@@ -10,9 +10,9 @@
     <meta name="keyword"  content="">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>A simple try on FreeBSD rootkit - Blog</title>
+    <title>Meaningless Push 2 - Blog</title>
 
-    <link rel="canonical" href="http://localhost:4000/2018/06/21/SimpleFreeBSDRookit-2019/">
+    <link rel="canonical" href="http://localhost:4000/2019/02/15/MeaninglessPush2-2020/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -140,15 +140,15 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/#FreeBSD" title="FreeBSD">FreeBSD</a>
+                        <a class="tag" href="/tags/#Meaningless" title="Meaningless">Meaningless</a>
                         
                     </div>
-                    <h1>A simple try on FreeBSD rootkit</h1>
+                    <h1>Meaningless Push 2</h1>
                     
                     
-                    <h2 class="subheading">一次简单的FreeBSD内rootkit的尝试</h2>
+                    <h2 class="subheading">水贴 2</h2>
                     
-                    <span class="meta">Posted by Roche on June 21, 2018</span>
+                    <span class="meta">Posted by Roche on February 15, 2019</span>
                 </div>
             </div>
         </div>
@@ -166,113 +166,16 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<h2 id="前言">前言</h2>
+				<p>最近闲着没事，在FreeBUF投了篇文章<br />
+主要是说为Nginx加入一个使用TF的安全检测模块</p>
 
-<p><a href="#build">跳过废话</a></p>
+<p>FreeBUF那边的反馈很快速<br />
+中午投过去，晚上就预约发布了<br />
+发布时间是在正月15那天</p>
 
-<p>最近在忙着将防篡改软件移植到FreeBSD上。</p>
+<p>有时间的的话，多帮忙点击几次</p>
 
-<p>对比Linux，FreeBSD的内核版本较少，可以直接在内核层内做个拦截。</p>
-
-<blockquote>
-  <p>Linux如果这样做的话，需要一直适配内核版本，这个很麻烦，大致是这两种思路：</p>
-
-  <p>每个linux内核版本都编译适配一下，对不同的内核版本适用不同的ko，需要无意义的编译很多次；<br />
-对应不同的内核型号，产品在用户处条件编译，有各种风险。</p>
-
-  <p>据说也可以做一个系统无关的elf文件运行。但这个的实现看起来很麻烦。</p>
-</blockquote>
-
-<p>看起来安全一些，不易被破坏。</p>
-
-<p>那么首先做一个监控open的hook吧</p>
-
-<p>参考这个 <a href="http://www.cnblogs.com/bits/archive/2009/05/19/BSD_SYS_open_hook.html">BSD下第一个syscall hook，监视SYS_open的情况</a></p>
-
-<p id="build"></p>
-<hr />
-
-<h2 id="正文">正文</h2>
-
-<p>首先是一些系统调用有关的文件</p>
-
-<p>/usr/src/sys/kern/sys_generic.c<br />
- /usr/src/sys/kern/vfs_syscalls.c<br />
-这两个有这次调用需要的sys_open的函数体</p>
-
-<p>/usr/src/sys/sys/syscall.h<br />
-这里是调用号</p>
-
-<p>首先，需要一个处理load的函数，类似这样</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>static int
-load(struct module *module, int cmd, void *arg)
-{
-    int error = 0;
-    switch (cmd) {
-    case MOD_LOAD:
-        uprintf("Hello, world!\n");
-        break;
-    case MOD_UNLOAD:
-        uprintf("Good-bye, cruel world!\n");
-        break;
-    default:
-        error = EOPNOTSUPP;
-        break;
-    }
-    return(error);
-}
-</code></pre></div></div>
-
-<blockquote>
-  <p>来自 Designing BSD Rootkits</p>
-</blockquote>
-
-<p>据说，也可以省略注册处理函数这步,但是为了安全，还是加上更好</p>
-<blockquote>
-  <p>Actually, this isn’t entirely true. You can have a KLD that just includes a sysctl. You can also dispense with module handlers if you wish and just use SYSINIT and SYSUNINIT directly to register functions to be invoked on load and unload, respectively. You can’t, however, indicate failure in those.</p>
-</blockquote>
-
-<p>为了load后使用自定义的open_hook代替普通的open，需要这样改进</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>switch (cmd) {
-    case MOD_LOAD:
-    sysent[SYS_open].sy_call = (sy_call_t *)open_hook;
-    break;
-    case MOD_UNLOAD:
-    sysent[SYS_open].sy_call = (sy_call_t *)sys_open;
-    break;
-    default:
-    error = EOPNOTSUPP;
-    break;
-}
-</code></pre></div></div>
-
-<p>这样，在load的情况下，就会将SYS_open的处理函数变为open_hook了，卸载时自动恢复。</p>
-
-<p>然后，为了打印open的参数，需要这样</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/* system call hook. */
-static int
-open_hook(struct thread *td, register struct open_args *uap)
-{
-// 输出 open 打开的文件到控制台
-uprintf("  SYS_open: \"%s\", flags: %d, mode: %X\n", uap-&gt;path, uap-&gt;flags, uap-&gt;mode);
-
-return (sys_open(td, uap));
-}
-</code></pre></div></div>
-
-<p>然后，编译加载，大概这样</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># ls .
-SYS_open: ".", flags: 1048576, mode: 0
-SYS_open: ".", flags: 1048576, mode: 0
-SYS_open: ".", flags: 1179652, mode: 0
-</code></pre></div></div>
-
-<p>可见新加入的组件已经开始工作了</p>
-
+<p>nipa~</p>
 
 
                 <hr>
@@ -282,9 +185,13 @@ SYS_open: ".", flags: 1179652, mode: 0
 
                 <ul class="pager">
                     
+                    <li class="previous">
+                        <a href="/2018/11/15/MeaninglessPush1-2020/" data-toggle="tooltip" data-placement="top" title="Meaningless Push 1">&larr; Previous Post</a>
+                    </li>
+                    
                     
                     <li class="next">
-                        <a href="/2018/07/13/SimpleKernelLevelServer1-2019/" data-toggle="tooltip" data-placement="top" title="A simple kernel-level server 1">Next Post &rarr;</a>
+                        <a href="/2019/02/16/MusicMIDI1-2020/" data-toggle="tooltip" data-placement="top" title="MIDI 梦と叶桜">Next Post &rarr;</a>
                     </li>
                     
                 </ul>

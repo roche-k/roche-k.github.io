@@ -5,9 +5,28 @@
     <description>A la guerre à guerre</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 16 Feb 2019 21:42:54 +0800</pubDate>
-    <lastBuildDate>Sat, 16 Feb 2019 21:42:54 +0800</lastBuildDate>
+    <pubDate>Sat, 16 Feb 2019 22:14:31 +0800</pubDate>
+    <lastBuildDate>Sat, 16 Feb 2019 22:14:31 +0800</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>MIDI 梦と叶桜</title>
+        <description>&lt;p&gt;最近在试着弹一些MIDI，稍微有点感觉了&lt;br /&gt;
+&lt;del&gt;大龄钢琴少年&lt;/del&gt;&lt;/p&gt;
+
+&lt;p&gt;为Blog加上了一个音乐的调用&lt;br /&gt;
+发一下发一下～&lt;/p&gt;
+
+&lt;p&gt;https://roche-k.github.io/music/梦と叶桜.mp3&lt;/p&gt;
+</description>
+        <pubDate>Sat, 16 Feb 2019 11:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/02/16/MusicMIDI1-2020/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/02/16/MusicMIDI1-2020/</guid>
+        
+        <category>MIDI</category>
+        
+        
+      </item>
     
       <item>
         <title>Meaningless Push 2</title>
@@ -23,8 +42,8 @@
 &lt;p&gt;nipa~&lt;/p&gt;
 </description>
         <pubDate>Fri, 15 Feb 2019 10:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2019/02/15/MeaninglessPush2/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/02/15/MeaninglessPush2/</guid>
+        <link>http://localhost:4000/2019/02/15/MeaninglessPush2-2020/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/02/15/MeaninglessPush2-2020/</guid>
         
         <category>Meaningless</category>
         
@@ -61,8 +80,8 @@
 
 </description>
         <pubDate>Thu, 15 Nov 2018 20:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2018/11/15/MeaninglessPush1/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/11/15/MeaninglessPush1/</guid>
+        <link>http://localhost:4000/2018/11/15/MeaninglessPush1-2020/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/11/15/MeaninglessPush1-2020/</guid>
         
         <category>Meaningless</category>
         
@@ -122,8 +141,8 @@
 &lt;p&gt;撸猫撸猫&lt;/p&gt;
 </description>
         <pubDate>Thu, 01 Nov 2018 20:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2018/11/01/BuildASimpleChatBot/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/11/01/BuildASimpleChatBot/</guid>
+        <link>http://localhost:4000/2018/11/01/BuildASimpleChatBot-2019/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/11/01/BuildASimpleChatBot-2019/</guid>
         
         <category>RNN</category>
         

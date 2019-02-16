@@ -1,0 +1,18 @@
+---
+layout:     post
+title:      "MIDI 梦と叶桜"
+subtitle:   "MIDI-梦と叶桜"
+date:       2019-02-16 3:00:00 
+author:     "Roche" 
+header-img: "img/home-bg.jpg" 
+tags:
+    - MIDI 
+---
+
+最近在试着弹一些MIDI，稍微有点感觉了  
+~~大龄钢琴少年~~  
+
+为Blog加上了一个音乐的调用  
+发一下发一下～
+  
+<p>https://roche-k.github.io/music/梦と叶桜.mp3</p>
