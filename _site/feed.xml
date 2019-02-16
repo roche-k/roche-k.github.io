@@ -5,9 +5,31 @@
     <description>A la guerre à guerre</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 16 Dec 2018 17:03:10 +0800</pubDate>
-    <lastBuildDate>Sun, 16 Dec 2018 17:03:10 +0800</lastBuildDate>
+    <pubDate>Sat, 16 Feb 2019 21:42:54 +0800</pubDate>
+    <lastBuildDate>Sat, 16 Feb 2019 21:42:54 +0800</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>Meaningless Push 2</title>
+        <description>&lt;p&gt;最近闲着没事，在FreeBUF投了篇文章&lt;br /&gt;
+主要是说为Nginx加入一个使用TF的安全检测模块&lt;/p&gt;
+
+&lt;p&gt;FreeBUF那边的反馈很快速&lt;br /&gt;
+中午投过去，晚上就预约发布了&lt;br /&gt;
+发布时间是在正月15那天&lt;/p&gt;
+
+&lt;p&gt;有时间的的话，多帮忙点击几次&lt;/p&gt;
+
+&lt;p&gt;nipa~&lt;/p&gt;
+</description>
+        <pubDate>Fri, 15 Feb 2019 10:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/02/15/MeaninglessPush2/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/02/15/MeaninglessPush2/</guid>
+        
+        <category>Meaningless</category>
+        
+        
+      </item>
     
       <item>
         <title>Meaningless Push 1</title>

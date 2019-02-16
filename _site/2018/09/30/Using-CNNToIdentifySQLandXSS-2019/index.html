@@ -10,9 +10,9 @@
     <meta name="keyword"  content="">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Tags - Blog</title>
+    <title>Using CNN to identify SQL and XSS - Blog</title>
 
-    <link rel="canonical" href="http://localhost:4000/tags/">
+    <link rel="canonical" href="http://localhost:4000/2018/09/30/Using-CNNToIdentifySQLandXSS-2019/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -123,345 +123,299 @@
 </script>
 
 
-    <!-- Page Header -->
-<header class="intro-header" style="background-image: url('/img/tag-bg.jpg')">
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/home-bg.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/img/home-bg.jpg')
+    }
+</style>
+<header class="intro-header" >
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading" id="tag-heading">
-                    <h1>Tags</h1>
-                    <span class="subheading">keep hungry keep foolish</span>
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#CNN" title="CNN">CNN</a>
+                        
+                    </div>
+                    <h1>Using CNN to identify SQL and XSS</h1>
+                    
+                    
+                    <h2 class="subheading">使用CNN做SQL和XSS的识别</h2>
+                    
+                    <span class="meta">Posted by Roche on September 30, 2018</span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-	<div class="row">
-		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <!-- 标签云 -->
-			<div id='tag_cloud' class="tags">
-				
-				<a href="#FreeBSD" title="FreeBSD" rel="3">FreeBSD</a>
-				
-				<a href="#Kernel" title="Kernel" rel="2">Kernel</a>
-				
-				<a href="#Server" title="Server" rel="2">Server</a>
-				
-				<a href="#Cat" title="Cat" rel="1">Cat</a>
-				
-				<a href="#CNN" title="CNN" rel="2">CNN</a>
-				
-				<a href="#RNN" title="RNN" rel="1">RNN</a>
-				
-				<a href="#Meaningless" title="Meaningless" rel="2">Meaningless</a>
-				
-			</div>
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
 
-            <!-- 标签列表 -->
-			
-			<div class="one-tag-list">
-			  	<span class="fa fa-tag listing-seperator" id="FreeBSD">
-                    <span class="tag-text">FreeBSD</span>
-                </span>
-				
-				  <!-- <li class="listing-item">
-				  <time datetime="2018-07-26">2018-07-26</time>
-				  <a href="/2018/07/26/SimpleKernelLevelServer2-2019/" title="A simple kernel-level server 2">A simple kernel-level server 2</a>
-				  </li> -->
-				 <div class="post-preview">
-				    <a href="/2018/07/26/SimpleKernelLevelServer2-2019/">
-				        <h2 class="post-title">
-                            A simple kernel-level server 2
-				        </h2>
-				        
-				        <h3 class="post-subtitle">
-				            一个简单的内核级服务器
-				        </h3>
-				        
-				    </a>
-				    <!-- <p class="post-meta">2018-07-26</p> -->
-				</div>
-				<hr>
-				
-				  <!-- <li class="listing-item">
-				  <time datetime="2018-07-13">2018-07-13</time>
-				  <a href="/2018/07/13/SimpleKernelLevelServer1-2019/" title="A simple kernel-level server 1">A simple kernel-level server 1</a>
-				  </li> -->
-				 <div class="post-preview">
-				    <a href="/2018/07/13/SimpleKernelLevelServer1-2019/">
-				        <h2 class="post-title">
-                            A simple kernel-level server 1
-				        </h2>
-				        
-				        <h3 class="post-subtitle">
-				            一个简单的内核级服务器
-				        </h3>
-				        
-				    </a>
-				    <!-- <p class="post-meta">2018-07-13</p> -->
-				</div>
-				<hr>
-				
-				  <!-- <li class="listing-item">
-				  <time datetime="2018-06-21">2018-06-21</time>
-				  <a href="/2018/06/21/SimpleFreeBSDRookit-2019/" title="A simple try on FreeBSD rootkit">A simple try on FreeBSD rootkit</a>
-				  </li> -->
-				 <div class="post-preview">
-				    <a href="/2018/06/21/SimpleFreeBSDRookit-2019/">
-				        <h2 class="post-title">
-                            A simple try on FreeBSD rootkit
-				        </h2>
-				        
-				        <h3 class="post-subtitle">
-				            一次简单的FreeBSD内rootkit的尝试
-				        </h3>
-				        
-				    </a>
-				    <!-- <p class="post-meta">2018-06-21</p> -->
-				</div>
-				<hr>
-				
-			</div>
-			
-			<div class="one-tag-list">
-			  	<span class="fa fa-tag listing-seperator" id="Kernel">
-                    <span class="tag-text">Kernel</span>
-                </span>
-				
-				  <!-- <li class="listing-item">
-				  <time datetime="2018-07-26">2018-07-26</time>
-				  <a href="/2018/07/26/SimpleKernelLevelServer2-2019/" title="A simple kernel-level server 2">A simple kernel-level server 2</a>
-				  </li> -->
-				 <div class="post-preview">
-				    <a href="/2018/07/26/SimpleKernelLevelServer2-2019/">
-				        <h2 class="post-title">
-                            A simple kernel-level server 2
-				        </h2>
-				        
-				        <h3 class="post-subtitle">
-				            一个简单的内核级服务器
-				        </h3>
-				        
-				    </a>
-				    <!-- <p class="post-meta">2018-07-26</p> -->
-				</div>
-				<hr>
-				
-				  <!-- <li class="listing-item">
-				  <time datetime="2018-07-13">2018-07-13</time>
-				  <a href="/2018/07/13/SimpleKernelLevelServer1-2019/" title="A simple kernel-level server 1">A simple kernel-level server 1</a>
-				  </li> -->
-				 <div class="post-preview">
-				    <a href="/2018/07/13/SimpleKernelLevelServer1-2019/">
-				        <h2 class="post-title">
-                            A simple kernel-level server 1
-				        </h2>
-				        
-				        <h3 class="post-subtitle">
-				            一个简单的内核级服务器
-				        </h3>
-				        
-				    </a>
-				    <!-- <p class="post-meta">2018-07-13</p> -->
-				</div>
-				<hr>
-				
-			</div>
-			
-			<div class="one-tag-list">
-			  	<span class="fa fa-tag listing-seperator" id="Server">
-                    <span class="tag-text">Server</span>
-                </span>
-				
-				  <!-- <li class="listing-item">
-				  <time datetime="2018-07-26">2018-07-26</time>
-				  <a href="/2018/07/26/SimpleKernelLevelServer2-2019/" title="A simple kernel-level server 2">A simple kernel-level server 2</a>
-				  </li> -->
-				 <div class="post-preview">
-				    <a href="/2018/07/26/SimpleKernelLevelServer2-2019/">
-				        <h2 class="post-title">
-                            A simple kernel-level server 2
-				        </h2>
-				        
-				        <h3 class="post-subtitle">
-				            一个简单的内核级服务器
-				        </h3>
-				        
-				    </a>
-				    <!-- <p class="post-meta">2018-07-26</p> -->
-				</div>
-				<hr>
-				
-				  <!-- <li class="listing-item">
-				  <time datetime="2018-07-13">2018-07-13</time>
-				  <a href="/2018/07/13/SimpleKernelLevelServer1-2019/" title="A simple kernel-level server 1">A simple kernel-level server 1</a>
-				  </li> -->
-				 <div class="post-preview">
-				    <a href="/2018/07/13/SimpleKernelLevelServer1-2019/">
-				        <h2 class="post-title">
-                            A simple kernel-level server 1
-				        </h2>
-				        
-				        <h3 class="post-subtitle">
-				            一个简单的内核级服务器
-				        </h3>
-				        
-				    </a>
-				    <!-- <p class="post-meta">2018-07-13</p> -->
-				</div>
-				<hr>
-				
-			</div>
-			
-			<div class="one-tag-list">
-			  	<span class="fa fa-tag listing-seperator" id="Cat">
-                    <span class="tag-text">Cat</span>
-                </span>
-				
-				  <!-- <li class="listing-item">
-				  <time datetime="2018-08-11">2018-08-11</time>
-				  <a href="/2018/08/11/CatEmperor1-2019/" title="Cat Emperor 1">Cat Emperor 1</a>
-				  </li> -->
-				 <div class="post-preview">
-				    <a href="/2018/08/11/CatEmperor1-2019/">
-				        <h2 class="post-title">
-                            Cat Emperor 1
-				        </h2>
-				        
-				        <h3 class="post-subtitle">
-				            猫皇 1
-				        </h3>
-				        
-				    </a>
-				    <!-- <p class="post-meta">2018-08-11</p> -->
-				</div>
-				<hr>
-				
-			</div>
-			
-			<div class="one-tag-list">
-			  	<span class="fa fa-tag listing-seperator" id="CNN">
-                    <span class="tag-text">CNN</span>
-                </span>
-				
-				  <!-- <li class="listing-item">
-				  <time datetime="2018-10-28">2018-10-28</time>
-				  <a href="/2018/10/28/Using-CNNToIdentifySQLandXSS2-2019/" title="Using CNN to identify SQL and XSS 2">Using CNN to identify SQL and XSS 2</a>
-				  </li> -->
-				 <div class="post-preview">
-				    <a href="/2018/10/28/Using-CNNToIdentifySQLandXSS2-2019/">
-				        <h2 class="post-title">
-                            Using CNN to identify SQL and XSS 2
-				        </h2>
-				        
-				        <h3 class="post-subtitle">
-				            使用CNN做SQL和XSS的识别 2
-				        </h3>
-				        
-				    </a>
-				    <!-- <p class="post-meta">2018-10-28</p> -->
-				</div>
-				<hr>
-				
-				  <!-- <li class="listing-item">
-				  <time datetime="2018-09-30">2018-09-30</time>
-				  <a href="/2018/09/30/Using-CNNToIdentifySQLandXSS-2019/" title="Using CNN to identify SQL and XSS">Using CNN to identify SQL and XSS</a>
-				  </li> -->
-				 <div class="post-preview">
-				    <a href="/2018/09/30/Using-CNNToIdentifySQLandXSS-2019/">
-				        <h2 class="post-title">
-                            Using CNN to identify SQL and XSS
-				        </h2>
-				        
-				        <h3 class="post-subtitle">
-				            使用CNN做SQL和XSS的识别
-				        </h3>
-				        
-				    </a>
-				    <!-- <p class="post-meta">2018-09-30</p> -->
-				</div>
-				<hr>
-				
-			</div>
-			
-			<div class="one-tag-list">
-			  	<span class="fa fa-tag listing-seperator" id="RNN">
-                    <span class="tag-text">RNN</span>
-                </span>
-				
-				  <!-- <li class="listing-item">
-				  <time datetime="2018-11-01">2018-11-01</time>
-				  <a href="/2018/11/01/BuildASimpleChatBot/" title="Build a simple chat bot">Build a simple chat bot</a>
-				  </li> -->
-				 <div class="post-preview">
-				    <a href="/2018/11/01/BuildASimpleChatBot/">
-				        <h2 class="post-title">
-                            Build a simple chat bot
-				        </h2>
-				        
-				        <h3 class="post-subtitle">
-				            建立一个简单的聊天机器人
-				        </h3>
-				        
-				    </a>
-				    <!-- <p class="post-meta">2018-11-01</p> -->
-				</div>
-				<hr>
-				
-			</div>
-			
-			<div class="one-tag-list">
-			  	<span class="fa fa-tag listing-seperator" id="Meaningless">
-                    <span class="tag-text">Meaningless</span>
-                </span>
-				
-				  <!-- <li class="listing-item">
-				  <time datetime="2019-02-15">2019-02-15</time>
-				  <a href="/2019/02/15/MeaninglessPush2/" title="Meaningless Push 2">Meaningless Push 2</a>
-				  </li> -->
-				 <div class="post-preview">
-				    <a href="/2019/02/15/MeaninglessPush2/">
-				        <h2 class="post-title">
-                            Meaningless Push 2
-				        </h2>
-				        
-				        <h3 class="post-subtitle">
-				            水贴 2
-				        </h3>
-				        
-				    </a>
-				    <!-- <p class="post-meta">2019-02-15</p> -->
-				</div>
-				<hr>
-				
-				  <!-- <li class="listing-item">
-				  <time datetime="2018-11-15">2018-11-15</time>
-				  <a href="/2018/11/15/MeaninglessPush1/" title="Meaningless Push 1">Meaningless Push 1</a>
-				  </li> -->
-				 <div class="post-preview">
-				    <a href="/2018/11/15/MeaninglessPush1/">
-				        <h2 class="post-title">
-                            Meaningless Push 1
-				        </h2>
-				        
-				        <h3 class="post-subtitle">
-				            水贴 1
-				        </h3>
-				        
-				    </a>
-				    <!-- <p class="post-meta">2018-11-15</p> -->
-				</div>
-				<hr>
-				
-			</div>
-			
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
 
-		</div>
-	</div>
-</div>
+				<p>来篇正式点的Post吧<br />
+<del>燃燃燃然</del></p>
+
+<h1 id="前言">前言</h1>
+
+<p>最近在FreeBUF上看到这样一篇文章<br />
+<a href="http://www.freebuf.com/articles/web/176709.html">基于卷积神经网络的SQL注入检测</a></p>
+
+<p>我觉得CNN算法就其本身而言，应用与NLP是没有问题的。<br />
+但是这个检测率应该可以再提升一点。<br />
+因为SQL，XSS的注入方法，就语法上而言，比NLP要简单一些。</p>
+
+<p>还可以用C写一个检测程序。<br />
+这样就更容易让这个模型跑在实际的环境。</p>
+
+<p>而且，样本在送检之前，首先做了循环解码，再做归一化处理。<br />
+循环解码是需要的，但是归一化处理不一样。<br />
+安全性不论，每条数据先要跑正则再送检，这个效率要比传统的正则匹配法低一些。</p>
+
+<p>那么，让我在巨人的肩膀上，再做一些小改进。</p>
+
+<h1 id="理论">理论</h1>
+
+<p>对于通过CNN来做NLP处理的论文，国内外都可以找到很多。</p>
+
+<p>大致的原理是这样：</p>
+
+<p><img src="https://roche-k.github.io/img/in-post/deep_learnig/2018-09-29-NLP-CNN.png" alt="大概这样" /></p>
+
+<p>句子-&gt;词向量-&gt;卷积层-&gt;池化层-&gt;链接层</p>
+
+<p>简单的说，就是把句子内的词转化为词向量，后面接单层的CNN。</p>
+
+<h1 id="训练数据">训练数据</h1>
+
+<p>首先，我们需要训练集，对照集，检测集
+这个可以用github的一些数据。这里，就使用前一文中提到的数据集来检测。</p>
+
+<p>首先，循环读取每一条数据，对每条数据循环解码，打上标签，最后存档。<br />
+这里的UrlDecode()完成循环解码的功能。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for each_line in sql_file:
+    str=UrlDecode(each_line)
+    f.writelines('sql' + '\t' + str + '\n')
+    count += 1
+print("sql end at %d" % count)
+</code></pre></div></div>
+
+<p>对于训练集的第一条数据</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1%29%20AND%205628%3D4794  
+</code></pre></div></div>
+
+<p>经过改写后，变成这样</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sql	1)and5628=4794
+</code></pre></div></div>
+
+<p>全部改写完成后，就可以用之前提到的模型训练了</p>
+
+<p>整个训练在6次迭代后完成。
+这个是tensorboard的损失图像。</p>
+
+<p><img src="https://roche-k.github.io/img/in-post/deep_learnig/2018-09-29-tensotboard.png" alt="大概这样" /></p>
+
+<p>最后使用test集，可以达到99%以上的检测率。<br />
+混淆矩阵也很好看。</p>
+
+<p><img src="https://roche-k.github.io/img/in-post/deep_learnig/2018-09-29-matrix.png" alt="大概这样" /></p>
+
+<h1 id="检测">检测</h1>
+
+<p>之前说过，我们需要让这个模型能应用于实际的生产中。<br />
+那么，结合Tensorflow的C库，来写一个检测程序。<br />
+关于Tensorflow C库的使用，有很多现有的例子，就不多写了。</p>
+
+<p>大致的流程是这样</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>int main(int argc, char* argv[])
+{
+    if (argc &lt; 2) return 1;
+
+    // pre load
+    tf_model_t* model = LoadTFModel("./tf_model.pb");
+    FillTensor(argv[1]);
+
+    printf("Model Returns: %d\n", RunTFModel(model));
+
+    FreeTFModel(model);
+    return 0;
+}
+</code></pre></div></div>
+
+<p>这样，就完成了使用C来检测注入的目标。<br />
+如果是需要重复的使用，可以在系统启动时调用LoadTFModel()，检测时只需调用FillTensor()和RunTFModel()即可。<br />
+可以省略掉加载的时间。<br />
+不用时调用FreeTFModel()清空资源。</p>
+
+<p>如果需要看下单次处理的速度之类。<br />
+在FillTensor()和RunTFModel()之间加个循环，前后记录时间，转double除一下就可以。</p>
+
+<p>我在i7-2700上跑了50万次，平均不到100微秒。<br />
+大致1秒1万-2万多次的样子。<br />
+有时间调调参，或者使用GPU的话应该会更高。</p>
+
+<h1 id="结语">结语</h1>
+
+<p>撸猫撸猫</p>
+
+
+                <hr>
+
+                
+
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2018/08/11/CatEmperor1-2019/" data-toggle="tooltip" data-placement="top" title="Cat Emperor 1">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2018/10/28/Using-CNNToIdentifySQLandXSS2-2019/" data-toggle="tooltip" data-placement="top" title="Using CNN to identify SQL and XSS 2">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+
+                
+
+                
+
+            </div>
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+        				
+                            
+                				<a href="/tags/#FreeBSD" title="FreeBSD" rel="3">
+                                    FreeBSD
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#Kernel" title="Kernel" rel="2">
+                                    Kernel
+                                </a>
+                            
+        				
+                            
+                				<a href="/tags/#Server" title="Server" rel="2">
+                                    Server
+                                </a>
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#CNN" title="CNN" rel="2">
+                                    CNN
+                                </a>
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#Meaningless" title="Meaningless" rel="2">
+                                    Meaningless
+                                </a>
+                            
+        				
+        			</div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+                    
+                        <li><a href="http://huangxuan.me">Hux Blog</a></li>
+                    
+                        <li><a href="#">Foo</a></li>
+                    
+                        <li><a href="#">Bar</a></li>
+                    
+                        <li><a href="#">Example Friends</a></li>
+                    
+                        <li><a href="#">It helps SEO</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("http://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
 
 
     <!-- Footer -->
