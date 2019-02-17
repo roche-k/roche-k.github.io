@@ -1,0 +1,16 @@
+---
+layout:     post
+title:      "MIDI 甩葱歌"
+subtitle:   "MIDI-"甩葱歌
+date:       2019-02-17 3:00:00
+author:     "Roche" 
+header-img: "img/home-bg.jpg" 
+tags:
+    - MIDI 
+---
+
+最近弹MIDI越发熟练  
+这是新的录音  
+使用的是甩葱歌钢琴版
+  
+<p>https://roche-k.github.io/music/甩葱歌.mp3</p>
