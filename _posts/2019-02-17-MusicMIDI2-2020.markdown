@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "MIDI 甩葱歌"
-subtitle:   "MIDI-"甩葱歌
+subtitle:   "MIDI-甩葱歌"
 date:       2019-02-17 3:00:00
 author:     "Roche" 
 header-img: "img/home-bg.jpg" 
